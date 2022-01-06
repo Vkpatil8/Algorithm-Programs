@@ -1,35 +1,26 @@
 package com.algorithm;
-
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Anagram {
-	public static void main(String args[]) {
+    public static void main(String args[]) {
+        String str1[] = {"abcd"};
+        String str2[] = {"dcba"};
+        if (areAnagram(str1, str2))
+            System.out.println("The two strings are anagram of each other");
+        else
+            System.out.println("The two strings are not anagram of each other");
+    }
 
-		Scanner sc = new Scanner(System.in);
-
-		String str1 = sc.next();
-		String str2 = sc.next();
-
-		str1 = str1.toLowerCase();
-		str2 = str2.toLowerCase();
-
-		if (str1.length() != str2.length()) {
-			System.out.println("Strings are not anagram");
-		}
-		else {
-			char[] string1 = str1.toCharArray();  
-			char[] string2 = str2.toCharArray();  
-
-			Arrays.sort(string1);  
-			Arrays.sort(string2);  
-
-			if(Arrays.equals(string1, string2) == true) {
-				System.out.println("Strings are anagram");
-			}
-			else {
-				System.out.println("Strings are not anagram");
-			}
-		}
-	}
+    static boolean areAnagram(String[] str1, String[] str2) {
+        int n1 = str1.length;
+        int n2 = str2.length;
+        if (n1 != n2)
+            return false;
+        Arrays.sort(str1);
+        Arrays.sort(str2);
+        for (int i = 0; i < n1; i++)
+            if (str1[i] != str2[i])
+                return false;
+        return true;
+    }
 }
